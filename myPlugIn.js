@@ -48,12 +48,12 @@ function numberIsNumber(userInput) {
 
 setTimeout(mainLoop, 30000)
 
-function mainLoop(quantityOfTimes) {
+function mainLoop() {
 
     var firstTarget = document.getElementById("firstarget")
     var userArray = [];
     var remindedNumArray = []
-
+    var quantityOfTimes = numeriDaGenerare
 
 
     do {
