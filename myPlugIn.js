@@ -1,7 +1,7 @@
 numeroMinimo = 1
 numeroMassimo = 50
 numeriDaGenerare = 5
-var timeout = 5000
+var timeout = 30000
 
 
 
@@ -35,8 +35,18 @@ function showNum() {
 
 showNum()
 
+function numberIsNumber(userInput) {
+    var userInputNumber = parseInt(userInput)
 
-setTimeout(mainLoop(numeriDaGenerare), timeout)
+    if (Number.isNaN(userInputNumber) && !userInput) {
+
+        return false
+    }
+    return true
+}
+
+
+setTimeout(mainLoop, 30000)
 
 function mainLoop(quantityOfTimes) {
 
@@ -53,7 +63,7 @@ function mainLoop(quantityOfTimes) {
           remindedNumArray  = checkInArray(userArray, rndNumArray, numeriDaGenerare)
 
 
-        } else if (userArray.indexOf(remindedNum) > -1 && !numberIsNumber(remindedNum)) {
+        } else if (!numberIsNumber(remindedNum)) {
             alert("Non hai immesso un numero valido")
         } else {
             alert("Hai immesso un doppione")
@@ -80,8 +90,6 @@ function mainLoop(quantityOfTimes) {
         console.log(checkedItems)
         return checkedItems
     }
-      
-    
 
     console.log(remindedNumArray)
     firstTarget.innerHTML = ("Hai indovinato " + remindedNumArray.length + " numeri" + " e nello specifico i numeri erano " + remindedNumArray.join(", "))
@@ -93,12 +101,3 @@ function mainLoop(quantityOfTimes) {
 
 
 
-function numberIsNumber(userInput) {
-    var userInputNumber = parseInt(userInput)
-
-    if (Number.isNaN(userInputNumber) && !userInput) {
-
-        return false
-    }
-    return true
-}
