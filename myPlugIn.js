@@ -73,16 +73,16 @@ function collectingPromptAndPush (){
     return userArray
 }
 
-//Funzione confronto di due Array con stessa lunghezza
+//Funzione confronto di due Array (ricordati il minore per primo)
 
-function checkInArray(tocheckArray, mainArray, theTwoArrayLenght) {
+function checkInArray(tocheckArray, mainArray) {
          
     var checkedItems = []
    
 
-    for (var i = 0; i < theTwoArrayLenght; i++) {
+    for (var i = 0; i < tocheckArray.length; i++) {
 
-        for (var j = 0; j < theTwoArrayLenght; j++) {
+        for (var j = 0; j < mainArray.length; j++) {
 
             if (tocheckArray[i] === mainArray[j]) {
                 checkedItems.push(mainArray[j])}
@@ -105,14 +105,14 @@ function mainLoop() {
   
    collectdedNum = collectingPromptAndPush()
 
-   remindedNumArray  = checkInArray(collectdedNum, rndNumArray, numeriDaGenerare)
+   remindedNumArray  = checkInArray(collectdedNum, rndNumArray)
 
 
     console.log(remindedNumArray)
     firstTarget.innerHTML = ("Hai indovinato " + remindedNumArray.length + " numeri" + " e nello specifico i numeri erano " + remindedNumArray.join(", "))
-
     return
 
 }
+
 
 
