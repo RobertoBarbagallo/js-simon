@@ -1,9 +1,11 @@
+//Variabili globali
+
 numeroMinimo = 1
 numeroMassimo = 50
 numeriDaGenerare = 5
-var timeout = 30000
+var timeout = 5000
 
-
+//Funzioni per generare numeri random e inserirli in un Array
 
 function rndNumGen(minNum, maxNum) {
     var rndNum = parseInt((Math.random() * maxNum) + minNum)
@@ -22,18 +24,19 @@ function rndNumPush(quantityOfTimes, minNum, maxNum) {
     return arrayToReturn
 }
 
-
 var rndNumArray = []
 
 rndNumArray = rndNumPush(numeriDaGenerare, numeroMinimo, numeroMassimo)
 
-
+//Funzione per mpstrare l'alert
 
 function showNum() {
     alert("Memorizza questi numeri, hai " + (timeout / 1000) + " secondi: " + rndNumArray.join(" ,"))
 }
 
 showNum()
+
+//Funzione controllo del numero
 
 function numberIsNumber(userInput) {
     var userInputNumber = parseInt(userInput)
@@ -45,12 +48,9 @@ function numberIsNumber(userInput) {
     return true
 }
 
+//Funzione eseguo prompt e pusho se è un numero e se non è un doppione
 
-setTimeout(mainLoop, 30000)
-
-function mainLoop() {
-
-    var firstTarget = document.getElementById("firstarget")
+function collectingPromptAndPush (){
     var userArray = [];
     var remindedNumArray = []
     var quantityOfTimes = numeriDaGenerare
@@ -70,26 +70,43 @@ function mainLoop() {
         }
     } while (userArray.length < quantityOfTimes)
 
+    return userArray
+}
 
+//Funzione confronto di due Array con stessa lunghezza
 
-    function checkInArray(tocheckArray, mainArray, theTwoArrayLenght) {
-        var times = theTwoArrayLenght
-        var checkedItems = []
-       
+function checkInArray(tocheckArray, mainArray, theTwoArrayLenght) {
+         
+    var checkedItems = []
+   
 
-        for (var i = 0; i < times; i++) {
+    for (var i = 0; i < theTwoArrayLenght; i++) {
 
-            for (var j = 0; j < times; j++) {
+        for (var j = 0; j < theTwoArrayLenght; j++) {
 
-                if (tocheckArray[i] === mainArray[j]) {
-                    checkedItems.push(mainArray[j])}
-                
-            }
-
+            if (tocheckArray[i] === mainArray[j]) {
+                checkedItems.push(mainArray[j])}
+            
         }
-        console.log(checkedItems)
-        return checkedItems
+
     }
+    console.log(checkedItems)
+    return checkedItems
+}
+
+//Main Loop ritardato di un numero variabile ti millisecondi
+
+setTimeout(mainLoop, timeout)
+
+function mainLoop() {
+
+    var firstTarget = document.getElementById("firstarget")
+    var remindedNumArray = []
+  
+   collectdedNum = collectingPromptAndPush()
+
+   remindedNumArray  = checkInArray(collectdedNum, rndNumArray, numeriDaGenerare)
+
 
     console.log(remindedNumArray)
     firstTarget.innerHTML = ("Hai indovinato " + remindedNumArray.length + " numeri" + " e nello specifico i numeri erano " + remindedNumArray.join(", "))
@@ -97,7 +114,5 @@ function mainLoop() {
     return
 
 }
-
-
 
 
